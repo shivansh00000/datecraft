@@ -443,8 +443,9 @@ export default function ProposalView() {
     setNoText(phrases[Math.min(nextClicks, phrases.length - 1)] || 'No 🙈');
 
     if (behavior.type === 'moving') {
-      const x = (Math.random() - 0.5) * 200;
-      const y = (Math.random() - 0.5) * 200;
+      const range = typeof window !== 'undefined' && window.innerWidth < 768 ? 90 : 180;
+      const x = (Math.random() - 0.5) * range;
+      const y = (Math.random() - 0.5) * range;
       setNoButtonPos({ x, y });
     } else if (behavior.type === 'shrinking') {
       setNoButtonSize(Math.max(0.4, 1 - nextClicks * 0.1));
@@ -1061,7 +1062,7 @@ export default function ProposalView() {
                                 transform: `translate(${noButtonPos.x}px, ${noButtonPos.y}px) scale(${noButtonSize})`,
                                 transition: 'transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1)'
                               }}
-                              className="px-5 h-10 bg-slate-950 border border-slate-855 hover:bg-slate-900 text-slate-400 font-semibold rounded-xl text-xs absolute md:relative z-10"
+                              className="px-5 h-10 bg-slate-950 border border-slate-855 hover:bg-slate-900 text-slate-400 font-semibold rounded-xl text-xs relative z-10"
                             >
                               {noText}
                             </button>

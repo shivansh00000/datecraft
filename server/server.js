@@ -17,7 +17,7 @@ app.use(helmet({
   crossOriginResourcePolicy: false, // Let us serve local static uploaded assets
 }));
 
-// CORS Setup (allow Vite dev client on port 5173 + custom domain handles)
+// CORS Setup (allow Vite dev client on port 5173 + vercel previews)
 const allowedOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
@@ -26,7 +26,13 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
+    if (!origin) {
+      return callback(null, true);
+    }
+    const isAllowedStatic = allowedOrigins.includes(origin);
+    const isVercelPreview = origin.endsWith('.vercel.app');
+    
+    if (isAllowedStatic || isVercelPreview || process.env.NODE_ENV !== 'production') {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));

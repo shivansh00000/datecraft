@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply transition-colors duration-500;
+  }
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Theme Backgrounds */
+.theme-bg-gradient-pink {
+  background: linear-gradient(135deg, #fce7f3 0%, #ffe4e6 50%, #fbcfe8 100%);
+  color: #881337; /* Rose 900 */
+}
+
+.theme-bg-starry-dark {
+  background: linear-gradient(180deg, #09090b 0%, #0c0a09 50%, #1e1b4b 100%);
+  color: #f5f5f4; /* Stone 100 */
+}
+
+.theme-bg-warm-cozy {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 60%, #ffedd5 100%);
+  color: #78350f; /* Amber 900 */
+}
+
+.theme-bg-cinematic-dark {
+  background: linear-gradient(135deg, #0a0a0a 0%, #171717 70%, #450a0a 100%);
+  color: #f5f5f5; /* Neutral 100 */
+}
+
+.theme-bg-sunset-orange {
+  background: linear-gradient(135deg, #2e1065 0%, #701a75 40%, #c2410c 80%, #f97316 100%);
+  color: #fff;
+}
+
+.theme-bg-pastel-gold {
+  background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 55%, #f5f5dc 100%);
+  color: #44403c; /* Stone 800 */
+}
+
+/* Shooting Star Animation */
+.shooting-star {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 244, 0));
+  border-radius: 999px;
+  filter: drop-shadow(0 0 6px #699bff);
+  animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
+}
+
+@keyframes tail {
+  0% { width: 0; }
+  30% { width: 100px; }
+  100% { width: 0; }
+}
+
+@keyframes shooting {
+  0% { transform: translateX(-200px) translateY(-200px) rotate(45deg); }
+  100% { transform: translateX(300px) translateY(300px) rotate(45deg); }
+}
+
+/* Twinkle stars */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.twinkle-star {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Love letter fold line */
+.letter-folded {
+  transform: rotateX(10deg);
+  transform-style: preserve-3d;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.4);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(225, 29, 72, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(225, 29, 72, 0.7);
+}
